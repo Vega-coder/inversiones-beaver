@@ -6,6 +6,8 @@ export function validateQuoteRequest(input) {
   const name = String(input?.name || '').trim();
   const phone = String(input?.phone || '').trim();
   const projectType = String(input?.projectType || '').trim();
+  const finish = String(input?.finish || '').trim();
+  const scale = String(input?.scale || '').trim();
   const city = String(input?.city || '').trim();
   const details = String(input?.details || '').trim();
 
@@ -22,7 +24,7 @@ export function validateQuoteRequest(input) {
   return {
     valid: Object.keys(errors).length === 0,
     errors,
-    sanitized: { name, phone, projectType, city, details },
+    sanitized: { name, phone, projectType, finish, scale, city, details },
   };
 }
 
@@ -35,11 +37,17 @@ export function formatQuoteMessage(data) {
     `*Servicio:* ${data.projectType}`,
   ];
 
+  if (data.finish) {
+    lines.push(`*Acabado / Material:* ${data.finish}`);
+  }
+  if (data.scale) {
+    lines.push(`*Dimensión aproximada:* ${data.scale}`);
+  }
   if (data.city) {
     lines.push(`*Ciudad / Sector:* ${data.city}`);
   }
   if (data.details) {
-    lines.push(`*Detalles / Medidas aproximadas:* ${data.details}`);
+    lines.push(`*Detalles adicionales:* ${data.details}`);
   }
 
   lines.push('', 'Quedo atento para agendar visita técnica o recibir orientación.');

@@ -1,5 +1,11 @@
 import { CARPENTRY_CATEGORIES, findCategoryBySlug } from '@/domain/carpentry/categories.js';
-import { filterSolutions, WOOD_MATERIALS, WORKFLOW_STEPS } from '@/domain/carpentry/projects.js';
+import {
+  filterSolutions,
+  WOOD_MATERIALS,
+  WOOD_FINISHES,
+  WORKFLOW_STEPS,
+  CARPENTRY_FAQS,
+} from '@/domain/carpentry/projects.js';
 import { validateQuoteRequest, formatQuoteMessage } from '@/domain/carpentry/quote.js';
 
 export function createCarpentryUseCases({ carpentryRepository, contactGateway }) {
@@ -11,7 +17,9 @@ export function createCarpentryUseCases({ carpentryRepository, contactGateway })
         featuredSolutions: allSolutions.filter((item) => item.featured),
         allSolutions,
         materials: WOOD_MATERIALS,
+        finishes: WOOD_FINISHES,
         workflow: WORKFLOW_STEPS,
+        faqs: CARPENTRY_FAQS,
       };
     },
 

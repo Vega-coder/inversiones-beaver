@@ -37,15 +37,15 @@ export default function ServicesCatalog() {
     : 'Explora nuestras soluciones en closets, puertas, cocinas integrales, muebles de baño y mobiliario arquitectónico.';
 
   return (
-    <div className="container-luxe py-12 sm:py-16">
+    <div className="container-luxe py-10 sm:py-16">
       <SectionHeading eyebrow="Inversiones Beaver & Asociados S.A.S." title={title} subtitle={subtitle} />
 
-      {/* Filtros por categoría y búsqueda */}
-      <div className="mb-10 flex flex-col gap-4 border-y border-ink/10 py-6 lg:flex-row lg:items-center lg:justify-between">
-        <div className="flex flex-wrap items-center gap-2">
+      {/* Filtros horizontales desplazables en móvil + buscador */}
+      <div className="mb-8 flex flex-col gap-4 border-y border-ink/10 py-5 lg:flex-row lg:items-center lg:justify-between">
+        <div className="no-scrollbar flex items-center gap-2 overflow-x-auto pb-1 sm:flex-wrap">
           <Link
             to="/servicios"
-            className={`rounded-sm border px-4 py-2 text-[11px] font-semibold uppercase tracking-[0.16em] transition ${
+            className={`shrink-0 rounded-sm border px-4 py-2 text-[11px] font-semibold uppercase tracking-[0.16em] transition ${
               !categorySlug
                 ? 'border-mahogany bg-ink text-cream-light'
                 : 'border-ink/15 bg-white text-ink/75 hover:border-mahogany'
@@ -57,7 +57,7 @@ export default function ServicesCatalog() {
             <Link
               key={cat.slug}
               to={`/servicios/${cat.slug}`}
-              className={`rounded-sm border px-4 py-2 text-[11px] font-semibold uppercase tracking-[0.16em] transition ${
+              className={`shrink-0 rounded-sm border px-4 py-2 text-[11px] font-semibold uppercase tracking-[0.16em] transition ${
                 categorySlug === cat.slug
                   ? 'border-mahogany bg-ink text-cream-light'
                   : 'border-ink/15 bg-white text-ink/75 hover:border-mahogany'
@@ -82,7 +82,7 @@ export default function ServicesCatalog() {
       </div>
 
       {data.solutions.length === 0 ? (
-        <div className="rounded-sm border border-dashed border-ink/20 bg-white p-12 text-center">
+        <div className="rounded-sm border border-dashed border-ink/20 bg-white p-10 text-center">
           <p className="text-sm text-taupe">No encontramos proyectos que coincidan con tu búsqueda.</p>
           <button
             type="button"
@@ -96,14 +96,14 @@ export default function ServicesCatalog() {
           </button>
         </div>
       ) : (
-        <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+        <div className="grid gap-5 sm:gap-6 sm:grid-cols-2 lg:grid-cols-3">
           {data.solutions.map((item) => (
             <Link
               key={item.id}
               to={`/proyecto/${item.slug}`}
               className="group flex flex-col overflow-hidden rounded-sm border border-ink/10 bg-white shadow-card transition duration-300 hover:-translate-y-1 hover:border-mahogany/40"
             >
-              <div className="aspect-[4/3] overflow-hidden bg-cream">
+              <div className="aspect-[16/10] overflow-hidden bg-cream sm:aspect-[4/3]">
                 <img
                   src={item.image}
                   alt={item.title}
@@ -111,7 +111,7 @@ export default function ServicesCatalog() {
                   className="h-full w-full object-cover transition duration-700 group-hover:scale-105"
                 />
               </div>
-              <div className="flex flex-1 flex-col p-6">
+              <div className="flex flex-1 flex-col p-5 sm:p-6">
                 <p className="eyebrow text-[10px] text-mahogany">{item.categoryLabel}</p>
                 <h2 className="mt-2 font-display text-xl font-medium text-ink group-hover:text-mahogany">
                   {item.title}

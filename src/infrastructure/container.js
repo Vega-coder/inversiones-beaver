@@ -5,7 +5,6 @@ import { createContactGateway } from '@/infrastructure/gateways/contactGateway.j
 
 /**
  * Datos corporativos centralizados de Inversiones Beaver & Asociados S.A.S.
- * Actualiza VITE_WHATSAPP_NUMBER / VITE_CONTACT_EMAIL en Vercel o aquí cuando lo desees.
  */
 export const COMPANY_INFO = {
   legalName: 'Inversiones Beaver & Asociados S.A.S.',
@@ -13,7 +12,8 @@ export const COMPANY_INFO = {
   tagline: 'Carpintería Arquitectónica en Madera a Medida',
   description:
     'Diseño, fabricación e instalación de closets, puertas en madera, cocinas integrales, muebles de baño y mobiliario arquitectónico residencial y comercial.',
-  whatsappNumber: import.meta.env.VITE_WHATSAPP_NUMBER || '',
+  whatsappNumber: import.meta.env.VITE_WHATSAPP_NUMBER || '573202977883',
+  whatsappDisplay: '320 297 7883',
   email: import.meta.env.VITE_CONTACT_EMAIL || 'proyectos@inversionesbeaver.com',
   city: import.meta.env.VITE_COMPANY_CITY || 'Colombia · Proyectos Residenciales y Comerciales',
   schedule: 'Lunes a Sábado · Atención y visitas técnicas con cita previa',
