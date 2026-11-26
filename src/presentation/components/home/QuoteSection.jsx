@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import { FaWhatsapp } from 'react-icons/fa6';
 import { HiOutlineEnvelope, HiOutlineCheckCircle } from 'react-icons/hi2';
 import SectionHeading from '@/presentation/components/ui/SectionHeading.jsx';
@@ -14,12 +14,17 @@ const SCALE_OPTIONS = [
   'Requiere visita de medición',
 ];
 
-export default function QuoteSection({ preselectedService = '', preselectedFinish = '' }) {
+export default function QuoteSection({
+  selectedService = '',
+  onServiceChange,
+  selectedFinish = '',
+  onFinishChange,
+}) {
+  const [localService, setLocalService] = useState('Cocinas Integrales');
+  const [localFinish, setLocalFinish] = useState(WOOD_FINISHES[0].name);
   const [form, setForm] = useState({
     name: '',
     phone: '',
-    projectType: preselectedService || 'Cocinas Integrales',
-    finish: preselectedFinish || WOOD_FINISHES[0].name,
     scale: SCALE_OPTIONS[1],
     city: '',
     details: '',
@@ -27,20 +32,19 @@ export default function QuoteSection({ preselectedService = '', preselectedFinis
   const [errors, setErrors] = useState({});
   const [dispatchResult, setDispatchResult] = useState(null);
 
-  useEffect(() => {
-    if (preselectedService) {
-      setForm((prev) => ({ ...prev, projectType: preselectedService }));
-    }
-  }, [preselectedService]);
-
-  useEffect(() => {
-    if (preselectedFinish) {
-      setForm((prev) => ({ ...prev, finish: preselectedFinish }));
-    }
-  }, [preselectedFinish]);
+  const projectType = selectedService || localService;
+  const finish = selectedFinish || localFinish;
 
   const setField = (field, value) => {
-    setForm((prev) => ({ ...prev, [field]: value }));
+    if (field === 'projectType') {
+      setLocalService(value);
+      onServiceChange?.(value);
+    } else if (field === 'finish') {
+      setLocalFinish(value);
+      onFinishChange?.(value);
+    } else {
+      setForm((prev) => ({ ...prev, [field]: value }));
+    }
     if (errors[field]) {
       setErrors((prev) => ({ ...prev, [field]: undefined }));
     }
@@ -48,7 +52,11 @@ export default function QuoteSection({ preselectedService = '', preselectedFinis
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    const res = useCases.prepareQuoteDispatch(form);
+    const res = useCases.prepareQuoteDispatch({
+      ...form,
+      projectType,
+      finish,
+    });
     if (!res.ok) {
       setErrors(res.errors);
       return;
@@ -95,11 +103,11 @@ export default function QuoteSection({ preselectedService = '', preselectedFinis
               <dl className="mt-2.5 space-y-1.5 text-ink">
                 <div className="flex justify-between gap-2">
                   <dt className="text-taupe">Línea:</dt>
-                  <dd className="font-semibold text-right">{form.projectType}</dd>
+                  <dd className="font-semibold text-right">{projectType}</dd>
                 </div>
                 <div className="flex justify-between gap-2">
                   <dt className="text-taupe">Acabado:</dt>
-                  <dd className="font-semibold text-right">{form.finish}</dd>
+                  <dd className="font-semibold text-right">{finish}</dd>
                 </div>
                 <div className="flex justify-between gap-2">
                   <dt className="text-taupe">Escala:</dt>
@@ -119,7 +127,7 @@ export default function QuoteSection({ preselectedService = '', preselectedFinis
               </span>
               <div className="no-scrollbar flex gap-2 overflow-x-auto pb-1 sm:flex-wrap">
                 {serviceOptions.map((option) => {
-                  const active = form.projectType === option;
+                  const active = projectType === option;
                   return (
                     <button
                       key={option}
@@ -147,7 +155,7 @@ export default function QuoteSection({ preselectedService = '', preselectedFinis
                 </label>
                 <select
                   id="quote-finish"
-                  value={form.finish}
+                  value={finish}
                   onChange={(e) => setField('finish', e.target.value)}
                   className="input"
                 >

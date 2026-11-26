@@ -103,8 +103,10 @@ export default function Home() {
       <WorkflowSection workflow={showcase.workflow} />
       <FAQAccordion faqs={showcase.faqs} />
       <QuoteSection
-        preselectedService={selectedService}
-        preselectedFinish={selectedFinish}
+        selectedService={selectedService}
+        onServiceChange={setSelectedService}
+        selectedFinish={selectedFinish}
+        onFinishChange={setSelectedFinish}
       />
     </>
   );
