@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom';
-import { FaWhatsapp } from 'react-icons/fa6';
+import { FaInstagram, FaWhatsapp } from 'react-icons/fa6';
 import { HiOutlineEnvelope, HiOutlineMapPin, HiOutlineClock, HiOutlinePhone } from 'react-icons/hi2';
 import BeaverLogo from '@/presentation/components/brand/BeaverLogo.jsx';
 import { CARPENTRY_CATEGORIES } from '@/domain/carpentry/categories.js';
@@ -36,10 +36,13 @@ export default function Footer() {
               WhatsApp: {COMPANY_INFO.whatsappDisplay}
             </a>
             <a
-              href="/#cotizar"
+              href={COMPANY_INFO.instagramUrl}
+              target="_blank"
+              rel="noreferrer"
               className="btn-outline-light w-full justify-center px-5 py-3 text-[11px] sm:w-auto"
             >
-              Agendar Visita Técnica
+              <FaInstagram className="h-4 w-4" />
+              Instagram
             </a>
           </div>
         </div>
@@ -69,6 +72,17 @@ export default function Footer() {
               <HiOutlinePhone className="mt-0.5 h-4 w-4 shrink-0 text-brass-light" />
               <a href={whatsappHref} target="_blank" rel="noreferrer" className="font-medium text-cream-light hover:text-brass-light">
                 +57 {COMPANY_INFO.whatsappDisplay}
+              </a>
+            </li>
+            <li className="flex items-start gap-2.5">
+              <FaInstagram className="mt-0.5 h-4 w-4 shrink-0 text-brass-light" />
+              <a
+                href={COMPANY_INFO.instagramUrl}
+                target="_blank"
+                rel="noreferrer"
+                className="font-medium text-cream-light hover:text-brass-light"
+              >
+                {COMPANY_INFO.instagramHandle}
               </a>
             </li>
             <li className="flex items-start gap-2.5">

@@ -14,6 +14,10 @@ export const COMPANY_INFO = {
     'Diseño, fabricación e instalación de closets, puertas en madera, cocinas integrales, muebles de baño y mobiliario arquitectónico residencial y comercial.',
   whatsappNumber: import.meta.env.VITE_WHATSAPP_NUMBER || '573202977883',
   whatsappDisplay: '320 297 7883',
+  instagramUrl:
+    import.meta.env.VITE_INSTAGRAM_URL ||
+    'https://www.instagram.com/inversionesbeavercarpinteria?avpt=eWdxZnY1MmR4enBr',
+  instagramHandle: '@inversionesbeavercarpinteria',
   email: import.meta.env.VITE_CONTACT_EMAIL || 'proyectos@inversionesbeaver.com',
   city: import.meta.env.VITE_COMPANY_CITY || 'Colombia · Proyectos Residenciales y Comerciales',
   schedule: 'Lunes a Sábado · Atención y visitas técnicas con cita previa',

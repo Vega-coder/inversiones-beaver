@@ -1,7 +1,7 @@
 import { useState, useEffect, useCallback } from 'react';
 import { createPortal } from 'react-dom';
 import { Link, NavLink, useLocation } from 'react-router-dom';
-import { FaWhatsapp } from 'react-icons/fa6';
+import { FaInstagram, FaWhatsapp } from 'react-icons/fa6';
 import { HiOutlineBars3, HiOutlineXMark, HiArrowLongRight } from 'react-icons/hi2';
 import BeaverLogo from '@/presentation/components/brand/BeaverLogo.jsx';
 import { CARPENTRY_CATEGORIES } from '@/domain/carpentry/categories.js';
@@ -99,6 +99,16 @@ export default function Navbar() {
                   </a>
                 )}
                 <a
+                  href={COMPANY_INFO.instagramUrl}
+                  target="_blank"
+                  rel="noreferrer"
+                  onClick={closeMenu}
+                  className="btn-outline-light w-full justify-center py-3 text-[11px]"
+                >
+                  <FaInstagram className="h-4 w-4 text-brass-light" />
+                  Instagram
+                </a>
+                <a
                   href="/#cotizar"
                   onClick={closeMenu}
                   className="btn-mahogany w-full justify-center py-3 text-[11px]"
@@ -140,6 +150,15 @@ export default function Navbar() {
         </nav>
 
         <div className="flex shrink-0 items-center gap-2">
+          <a
+            href={COMPANY_INFO.instagramUrl}
+            target="_blank"
+            rel="noreferrer"
+            aria-label="Instagram Inversiones Beaver"
+            className="inline-flex h-9 w-9 items-center justify-center rounded-sm border border-ink/15 bg-white text-ink transition hover:border-mahogany hover:text-mahogany"
+          >
+            <FaInstagram className="h-4 w-4" />
+          </a>
           {quickWhatsApp.ok && (
             <a
               href={quickWhatsApp.whatsappUrl}
