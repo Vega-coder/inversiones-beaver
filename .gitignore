@@ -1,0 +1,14 @@
+# Logs
+logs
+*.log
+npm-debug.log*
+
+# Dependencies & Build
+node_modules
+dist
+dist-ssr
+*.local
+
+# Env
+.env
+.env.*.local
