@@ -63,7 +63,7 @@ export default function SolutionDetail() {
 
       <div className="mt-6 grid items-start gap-8 lg:grid-cols-12 lg:gap-10">
         {/* Imagen con zoom interactivo */}
-        <div className="lg:col-span-7">
+        <div className="min-w-0 lg:col-span-7">
           <button
             type="button"
             onClick={() => setZoomOpen(true)}
@@ -82,7 +82,7 @@ export default function SolutionDetail() {
           </button>
         </div>
 
-        <div className="lg:col-span-5">
+        <div className="min-w-0 lg:col-span-5">
           <p className="eyebrow text-mahogany">{solution.categoryLabel}</p>
           <h1 className="mt-2 font-display text-3xl font-semibold text-ink sm:text-4xl">
             {solution.title}

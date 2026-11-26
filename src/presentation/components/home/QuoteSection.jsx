@@ -73,7 +73,7 @@ export default function QuoteSection({
   return (
     <section id="cotizar" className="container-luxe py-14 sm:py-22">
       <div className="grid gap-8 rounded-sm border border-ink/15 bg-white p-5 shadow-luxe sm:p-10 lg:grid-cols-12 lg:gap-10 lg:p-14">
-        <div className="lg:col-span-5">
+        <div className="min-w-0 lg:col-span-5">
           <ScrollReveal>
             <SectionHeading
               align="left"
@@ -118,14 +118,14 @@ export default function QuoteSection({
           </ScrollReveal>
         </div>
 
-        <div className="lg:col-span-7">
+        <div className="min-w-0 lg:col-span-7">
           <form onSubmit={handleSubmit} className="space-y-5" noValidate>
             {/* Paso 1: Selector táctil de servicio */}
             <div>
               <span className="mb-2 block text-[11px] font-semibold uppercase tracking-wider text-ink">
                 1. ¿Qué deseas fabricar? *
               </span>
-              <div className="no-scrollbar flex gap-2 overflow-x-auto pb-1 sm:flex-wrap">
+              <div className="grid grid-cols-2 gap-2 sm:flex sm:flex-wrap">
                 {serviceOptions.map((option) => {
                   const active = projectType === option;
                   return (
@@ -133,7 +133,7 @@ export default function QuoteSection({
                       key={option}
                       type="button"
                       onClick={() => setField('projectType', option)}
-                      className={`shrink-0 rounded-sm border px-3 py-2 text-[11px] font-semibold uppercase tracking-wider transition active:scale-95 ${
+                      className={`rounded-sm border px-2.5 py-2 text-center text-[10px] font-semibold uppercase tracking-wider transition active:scale-95 sm:px-3 sm:text-[11px] ${
                         active
                           ? 'border-mahogany bg-mahogany text-cream-light'
                           : 'border-ink/15 bg-cream-light text-ink/80 hover:border-mahogany'

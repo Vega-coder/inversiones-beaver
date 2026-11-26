@@ -90,7 +90,7 @@ export default function Hero() {
   });
 
   return (
-    <section className="relative overflow-hidden border-b border-ink/10 bg-cream-light">
+    <section className="relative w-full overflow-hidden border-b border-ink/10 bg-cream-light">
       <div
         className="pointer-events-none absolute inset-0 opacity-40"
         style={{
@@ -100,19 +100,19 @@ export default function Hero() {
       />
 
       <div className="container-luxe relative grid items-center gap-8 py-8 sm:gap-10 sm:py-14 lg:grid-cols-12 lg:gap-12 lg:py-20">
-        {/* Columna izquierda */}
-        <div className="lg:col-span-6">
-          <div className="inline-flex items-center gap-2 border border-mahogany/25 bg-white/85 px-3 py-1.5 text-[10px] font-semibold uppercase tracking-[0.16em] text-mahogany sm:tracking-[0.2em]">
+        {/* Columna izquierda: centrada en móvil, alineada a la izquierda en escritorio */}
+        <div className="min-w-0 text-center lg:col-span-6 lg:text-left">
+          <div className="inline-flex max-w-full items-center gap-2 border border-mahogany/25 bg-white/85 px-3 py-1.5 text-[10px] font-semibold uppercase tracking-[0.14em] text-mahogany sm:tracking-[0.2em]">
             <HiOutlineShieldCheck className="h-4 w-4 shrink-0" />
-            <span>Inversiones Beaver &amp; Asociados S.A.S.</span>
+            <span className="truncate">Inversiones Beaver &amp; Asociados S.A.S.</span>
           </div>
 
-          <h1 className="mt-4 font-display text-[2rem] font-semibold leading-[1.12] tracking-tight text-ink sm:mt-6 sm:text-5xl lg:text-[3.35rem]">
+          <h1 className="mt-4 font-display text-[1.95rem] font-semibold leading-[1.12] tracking-tight text-ink sm:mt-6 sm:text-5xl lg:text-[3.35rem]">
             Carpintería arquitectónica en madera{' '}
             <span className="font-normal italic text-mahogany">hecha a tu medida.</span>
           </h1>
 
-          <p className="mt-4 max-w-xl text-sm leading-relaxed text-taupe sm:mt-5 sm:text-base">
+          <p className="mx-auto mt-4 max-w-xl text-sm leading-relaxed text-taupe sm:mt-5 sm:text-base lg:mx-0">
             Diseñamos, fabricamos e instalamos <strong className="font-semibold text-ink">closets</strong>,{' '}
             <strong className="font-semibold text-ink">puertas</strong>,{' '}
             <strong className="font-semibold text-ink">cocinas integrales</strong> y{' '}
@@ -120,7 +120,7 @@ export default function Hero() {
             herrajes de cierre suave y acabado profesional.
           </p>
 
-          <div className="mt-6 flex flex-col gap-3 sm:mt-8 sm:flex-row sm:flex-wrap sm:items-center sm:gap-4">
+          <div className="mt-6 flex flex-col gap-3 sm:mt-8 sm:flex-row sm:flex-wrap sm:justify-center sm:gap-4 lg:justify-start">
             <a href="#cotizar" className="btn-mahogany w-full justify-center sm:w-auto">
               Solicitar Cotización
               <HiArrowLongRight className="h-4 w-4" />
@@ -138,10 +138,10 @@ export default function Hero() {
             )}
           </div>
 
-          {/* Selector horizontal desplazable en móvil */}
+          {/* Selector en cuadrícula simétrica en móvil para evitar desborde */}
           <div className="mt-8 border-t border-ink/10 pt-5 sm:mt-10 sm:pt-6">
             <p className="eyebrow text-[10px] text-taupe">Toca para explorar nuestras líneas</p>
-            <div className="no-scrollbar mt-3 flex gap-2 overflow-x-auto pb-1 sm:flex-wrap">
+            <div className="mt-3 grid grid-cols-2 gap-2 sm:flex sm:flex-wrap sm:justify-center lg:justify-start">
               {HERO_SHOWCASE.map((item, idx) => {
                 const isSelected = idx === activeIndex;
                 return (
@@ -149,7 +149,7 @@ export default function Hero() {
                     key={item.id}
                     type="button"
                     onClick={() => setActiveIndex(idx)}
-                    className={`shrink-0 rounded-sm border px-3.5 py-2 text-[11px] font-semibold uppercase tracking-[0.14em] transition active:scale-95 ${
+                    className={`rounded-sm border px-2.5 py-2.5 text-center text-[10px] font-semibold uppercase tracking-[0.1em] transition active:scale-95 sm:px-3.5 sm:text-[11px] sm:tracking-[0.14em] ${
                       isSelected
                         ? 'border-mahogany bg-ink text-cream-light shadow-sm'
                         : 'border-ink/15 bg-white text-ink/75 hover:border-mahogany hover:text-mahogany'
@@ -165,7 +165,7 @@ export default function Hero() {
 
         {/* Columna derecha: Tarjeta visual interactiva */}
         <div
-          className="lg:col-span-6"
+          className="min-w-0 lg:col-span-6"
           onMouseEnter={() => setPaused(true)}
           onMouseMove={handleMouseMove}
           onMouseLeave={handleMouseLeave}
@@ -185,9 +185,8 @@ export default function Hero() {
               />
               <div className="absolute inset-0 bg-gradient-to-t from-ink/95 via-ink/35 to-transparent" />
 
-              {/* Etiqueta superior y flechas */}
-              <div className="absolute inset-x-4 top-4 flex items-center justify-between gap-2 sm:inset-x-5 sm:top-5">
-                <span className="bg-mahogany px-3 py-1.5 text-[10px] font-semibold uppercase tracking-[0.18em] text-cream-light">
+              <div className="absolute inset-x-3 top-3 flex items-center justify-between gap-2 sm:inset-x-5 sm:top-5">
+                <span className="bg-mahogany px-2.5 py-1 text-[9px] font-semibold uppercase tracking-[0.16em] text-cream-light sm:px-3 sm:py-1.5 sm:text-[10px]">
                   {current.tag}
                 </span>
 
@@ -196,7 +195,7 @@ export default function Hero() {
                     type="button"
                     onClick={prevSlide}
                     aria-label="Anterior especialidad"
-                    className="flex h-8 w-8 items-center justify-center rounded-sm bg-ink/70 text-cream-light backdrop-blur-sm transition hover:bg-mahogany active:scale-95"
+                    className="flex h-8 w-8 items-center justify-center rounded-sm bg-ink/75 text-cream-light backdrop-blur-sm transition hover:bg-mahogany active:scale-95"
                   >
                     <HiChevronLeft className="h-4 w-4" />
                   </button>
@@ -204,26 +203,26 @@ export default function Hero() {
                     type="button"
                     onClick={nextSlide}
                     aria-label="Siguiente especialidad"
-                    className="flex h-8 w-8 items-center justify-center rounded-sm bg-ink/70 text-cream-light backdrop-blur-sm transition hover:bg-mahogany active:scale-95"
+                    className="flex h-8 w-8 items-center justify-center rounded-sm bg-ink/75 text-cream-light backdrop-blur-sm transition hover:bg-mahogany active:scale-95"
                   >
                     <HiChevronRight className="h-4 w-4" />
                   </button>
                 </div>
               </div>
 
-              <div className="absolute inset-x-0 bottom-0 p-4 text-cream-light sm:p-8">
+              <div className="absolute inset-x-0 bottom-0 p-4 text-left text-cream-light sm:p-8">
                 <p className="eyebrow text-[10px] text-brass-light">{current.eyebrow}</p>
-                <h2 className="mt-1 font-display text-xl font-medium sm:text-3xl">
+                <h2 className="mt-1 font-display text-lg font-medium sm:text-3xl">
                   {current.title}
                 </h2>
-                <p className="mt-1.5 line-clamp-2 max-w-lg text-xs leading-relaxed text-cream/85 sm:line-clamp-none sm:text-sm">
+                <p className="mt-1 line-clamp-2 max-w-lg text-xs leading-relaxed text-cream/85 sm:mt-1.5 sm:line-clamp-none sm:text-sm">
                   {current.subtitle}
                 </p>
 
                 <div className="mt-3 flex flex-wrap items-center justify-between gap-3 sm:mt-4">
                   <Link
                     to={current.slug}
-                    className="inline-flex items-center gap-2 text-[11px] font-semibold uppercase tracking-[0.18em] text-brass-light transition hover:text-white"
+                    className="inline-flex items-center gap-2 text-[10px] font-semibold uppercase tracking-[0.16em] text-brass-light transition hover:text-white sm:text-[11px]"
                   >
                     Ver línea completa <HiArrowLongRight className="h-4 w-4" />
                   </Link>

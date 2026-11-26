@@ -40,12 +40,12 @@ export default function ServicesCatalog() {
     <div className="container-luxe py-10 sm:py-16">
       <SectionHeading eyebrow="Inversiones Beaver & Asociados S.A.S." title={title} subtitle={subtitle} />
 
-      {/* Filtros horizontales desplazables en móvil + buscador */}
+      {/* Filtros centrados en móvil + buscador */}
       <div className="mb-8 flex flex-col gap-4 border-y border-ink/10 py-5 lg:flex-row lg:items-center lg:justify-between">
-        <div className="no-scrollbar flex items-center gap-2 overflow-x-auto pb-1 sm:flex-wrap">
+        <div className="flex flex-wrap items-center justify-center gap-2 lg:justify-start">
           <Link
             to="/servicios"
-            className={`shrink-0 rounded-sm border px-4 py-2 text-[11px] font-semibold uppercase tracking-[0.16em] transition ${
+            className={`rounded-sm border px-3.5 py-2 text-[11px] font-semibold uppercase tracking-[0.14em] transition ${
               !categorySlug
                 ? 'border-mahogany bg-ink text-cream-light'
                 : 'border-ink/15 bg-white text-ink/75 hover:border-mahogany'
@@ -57,7 +57,7 @@ export default function ServicesCatalog() {
             <Link
               key={cat.slug}
               to={`/servicios/${cat.slug}`}
-              className={`shrink-0 rounded-sm border px-4 py-2 text-[11px] font-semibold uppercase tracking-[0.16em] transition ${
+              className={`rounded-sm border px-3.5 py-2 text-[11px] font-semibold uppercase tracking-[0.14em] transition ${
                 categorySlug === cat.slug
                   ? 'border-mahogany bg-ink text-cream-light'
                   : 'border-ink/15 bg-white text-ink/75 hover:border-mahogany'

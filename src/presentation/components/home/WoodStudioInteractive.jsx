@@ -26,9 +26,9 @@ export default function WoodStudioInteractive({ finishes = [], onSelectFinish })
           />
         </ScrollReveal>
 
-        <div className="grid gap-6 rounded-sm border border-ink/15 bg-white p-5 shadow-card sm:p-8 lg:grid-cols-12 lg:items-center lg:gap-10">
+        <div className="grid gap-6 rounded-sm border border-ink/15 bg-white p-4 shadow-card sm:p-8 lg:grid-cols-12 lg:items-center lg:gap-10">
           {/* Selector táctil de muestras (horizontal en móvil, grilla en escritorio) */}
-          <div className="lg:col-span-5">
+          <div className="min-w-0 lg:col-span-5">
             <div className="flex items-center gap-2 text-[11px] font-semibold uppercase tracking-[0.18em] text-mahogany">
               <HiOutlineSwatch className="h-4 w-4" />
               <span>Selecciona un acabado</span>
@@ -67,7 +67,7 @@ export default function WoodStudioInteractive({ finishes = [], onSelectFinish })
           </div>
 
           {/* Ficha interactiva del acabado seleccionado */}
-          <div className="lg:col-span-7">
+          <div className="min-w-0 lg:col-span-7">
             <div className="rounded-sm border border-ink/10 bg-cream-light p-5 sm:p-7">
               <div className="flex flex-wrap items-center justify-between gap-3">
                 <div>

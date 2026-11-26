@@ -14,15 +14,15 @@ export default function Layout() {
   });
 
   return (
-    <div className="flex min-h-screen flex-col bg-cream-light text-ink">
+    <div className="flex min-h-screen w-full flex-col overflow-x-clip bg-cream-light text-ink">
       {/* Cinta superior corporativa */}
-      <div className="bg-ink px-3 py-2 text-center text-[10px] font-medium uppercase tracking-[0.16em] text-cream/90 sm:tracking-[0.22em] sm:text-[11px]">
+      <div className="bg-ink px-3 py-2 text-center text-[10px] font-medium uppercase tracking-[0.14em] text-cream/90 sm:tracking-[0.22em] sm:text-[11px]">
         Inversiones Beaver &amp; Asociados S.A.S. · Fabricación a Medida
       </div>
 
       <Navbar />
 
-      <main className="flex-1">
+      <main className="flex-1 overflow-x-clip">
         <Outlet />
       </main>
 
